@@ -5,21 +5,71 @@ const Menu = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Button color="inherit">
-          <Link href="/">Início</Link>
-        </Button>
-        <Button color="inherit">
-          <Link href="/usuarios">Usuários</Link>
-        </Button>
-        <Button color="inherit">
-          <Link href="/noticias-populares">Notícias Populares</Link>
-        </Button>
-        <Button color="inherit">
-          <Link href="/noticias-recomendadas">Recomendadas</Link>
-        </Button>
-        <Button color="inherit">
-          <Link href="/cadastrar-noticia">Cadastrar Notícia</Link>
-        </Button>
+        <Link href="/" passHref>
+          <Button
+            color="inherit"
+            sx={{
+              color: "white",
+              backgroundColor: "blue",
+              fontWeight: "bold",
+              "&:hover": { backgroundColor: "darkblue" },
+            }}
+          >
+            <span>Início</span>
+          </Button>
+        </Link>
+        <Link href="/usuarios" passHref>
+          <Button
+            color="inherit"
+            sx={{
+              color: "white",
+              backgroundColor: "blue",
+              fontWeight: "bold",
+              "&:hover": { backgroundColor: "darkblue" },
+            }}
+          >
+            <span>Usuários</span>
+          </Button>
+        </Link>
+        <Link href="/noticias-populares" passHref>
+          <Button
+            color="inherit"
+            sx={{
+              color: "white",
+              backgroundColor: "blue",
+              fontWeight: "bold",
+              "&:hover": { backgroundColor: "darkblue" },
+            }}
+          >
+            <span>Notícias Populares</span>
+          </Button>
+        </Link>
+        <Link href="/noticias-recomendadas" passHref>
+          <Button
+            color="inherit"
+            sx={{
+              color: "white",
+              backgroundColor: "blue",
+              fontWeight: "bold",
+              "&:hover": { backgroundColor: "darkblue" },
+            }}
+          >
+            <span>Recomendadas</span>
+          </Button>
+        </Link>
+        <Link href="/cadastrar-noticia" passHref>
+          <Button
+            color="inherit"
+            sx={{
+              color: "white",
+              backgroundColor: "blue",
+              fontWeight: "bold",
+              "&:hover": { backgroundColor: "darkblue" },
+            }}
+          >
+            <span>Cadastrar Notícia</span>
+          </Button>
+        </Link>
       </Toolbar>
     </AppBar>
   );

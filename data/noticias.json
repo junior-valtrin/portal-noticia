@@ -1,0 +1,62 @@
+[
+  {
+    "id_news": "23kj2l3123klj9djladdsds234g",
+    "id_lfm": 0,
+    "url": "www.noticia.com.br/noticia1",
+    "titulo": "Notícia 1"
+  },
+  {
+    "id_news": "98asd7f98a7sdf89a7sdf89a7sd",
+    "id_lfm": 0,
+    "url": "www.noticia.com.br/noticia2",
+    "titulo": "Notícia 2"
+  },
+  {
+    "id_news": "12kj3h1k2j3h1k2j3h1k2j3h1k2j",
+    "id_lfm": 1,
+    "url": "www.noticia.com.br/noticia3",
+    "titulo": "Notícia 3"
+  },
+  {
+    "id_news": "45as6df45a6sdf45a6sdf45a6sdf",
+    "id_lfm": 1,
+    "url": "www.noticia.com.br/noticia4",
+    "titulo": "Notícia 4"
+  },
+  {
+    "id_news": "78asd9f78a9sdf78a9sdf78a9sdf",
+    "id_lfm": 2,
+    "url": "www.noticia.com.br/noticia5",
+    "titulo": "Notícia 5"
+  },
+  {
+    "id_news": "34kj5h3k4j5h3k4j5h3k4j5h3k4j",
+    "id_lfm": 2,
+    "url": "www.noticia.com.br/noticia6",
+    "titulo": "Notícia 6"
+  },
+  {
+    "id_news": "56as7df56a7sdf56a7sdf56a7sdf",
+    "id_lfm": 3,
+    "url": "www.noticia.com.br/noticia7",
+    "titulo": "Notícia 7"
+  },
+  {
+    "id_news": "90as1df90a1sdf90a1sdf90a1sdf",
+    "id_lfm": 3,
+    "url": "www.noticia.com.br/noticia8",
+    "titulo": "Notícia 8"
+  },
+  {
+    "id_news": "23kj4h2k3j4h2k3j4h2k3j4h2k3j",
+    "id_lfm": 4,
+    "url": "www.noticia.com.br/noticia9",
+    "titulo": "Notícia 9"
+  },
+  {
+    "id_news": "67as8df67a8sdf67a8sdf67a8sdf",
+    "id_lfm": 4,
+    "url": "www.noticia.com.br/noticia10",
+    "titulo": "Notícia 10"
+  }
+]
