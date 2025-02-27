@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Slider from "react-slick";
 import {
@@ -7,27 +7,50 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Box,
 } from "@mui/material";
 import Link from "next/link";
-import noticias from "../../../data/noticias.json";
+import { fetchNoticiasRecomendadas } from "../../services/api";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const NoticiaDetalhes = () => {
+const NoticiasRecomendadas = () => {
   const router = useRouter();
-  const { id } = router.query; // ID da notícia (id_news)
-  const usuarioId = router.query.usuario; // ID do usuário
+  const { id } = router.query; // ID do aluno
+  interface Noticia {
+    id_noticia: number;
+    url: string;
+    titulo: string;
+    subtitulo: string;
+  }
 
-  // Encontra a notícia pelo id_news
-  const noticia = noticias.find((noticia) => noticia.id_news === id);
+  const [noticias, setNoticias] = useState<Noticia[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // Filtra as notícias recomendadas para o mesmo usuário (id_lfm)
-  const noticiasRecomendadas = noticias.filter(
-    (noticia) => noticia.id_lfm === Number(usuarioId) && noticia.id_news !== id
-  );
+  useEffect(() => {
+    const carregarNoticias = async () => {
+      if (!id) return; // Evita chamadas sem ID
+      try {
+        const data = await fetchNoticiasRecomendadas(Number(id));
+        setNoticias(data as Noticia[]);
+      } catch (err) {
+        setError("Erro ao carregar notícias recomendadas");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Configurações do carrossel
+    carregarNoticias();
+  }, [id]);
+
+  if (loading) {
+    return <Typography>Carregando...</Typography>;
+  }
+
+  if (error) {
+    return <Typography color="error">{error}</Typography>;
+  }
+
   const settings = {
     dots: true,
     infinite: true,
@@ -50,58 +73,31 @@ const NoticiaDetalhes = () => {
     ],
   };
 
-  if (!noticia) {
-    return (
-      <Container>
-        <Typography variant="h4" gutterBottom>
-          Notícia não encontrada
-        </Typography>
-      </Container>
-    );
-  }
-
   return (
     <Container style={{ padding: "20px" }}>
-      {/* Detalhes da Notícia */}
-      <Box mb={4}>
-        <Typography variant="h3" gutterBottom>
-          {noticia.titulo}
-        </Typography>
-        <CardMedia
-          component="img"
-          height="400"
-          image={noticia.url} // Supondo que a URL seja uma imagem
-          alt={noticia.titulo}
-          style={{ borderRadius: "8px" }}
-        />
-        <Typography variant="body1" mt={2}>
-          {/* Se houver um corpo de texto, adicione aqui */}
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </Typography>
-      </Box>
-
-      {/* Carrossel de Notícias Recomendadas */}
       <Typography variant="h4" gutterBottom>
-        Mais notícias para você
+        Notícias Recomendadas
       </Typography>
-      {noticiasRecomendadas.length > 0 ? (
+      {noticias.length > 0 ? (
         <Slider {...settings}>
-          {noticiasRecomendadas.map((noticia) => (
-            <div key={noticia.id_news}>
-              <Link
-                href={`/noticia/${noticia.id_news}?usuario=${usuarioId}`}
-                passHref
-              >
+          {noticias.map((noticia) => (
+            <div key={noticia.id_noticia}>
+              <Link href={`/noticia/${noticia.id_noticia}`} passHref>
                 <Card style={{ margin: "10px", cursor: "pointer" }}>
-                  <CardMedia
+                  {/* <CardMedia
                     component="img"
                     height="140"
                     image={noticia.url}
                     alt={noticia.titulo}
-                  />
+                    // onError={(e) => {
+                    // e.currentTarget.src = "/imagem-padrao.jpg"; // Imagem de fallback
+                    // }} */}
+                  {/* /> */}
                   <CardContent>
                     <Typography variant="h6">{noticia.titulo}</Typography>
+                    <Typography variant="subtitle1" color="text.secondary">
+                      {noticia.subtitulo}
+                    </Typography>
                   </CardContent>
                 </Card>
               </Link>
@@ -117,4 +113,4 @@ const NoticiaDetalhes = () => {
   );
 };
 
-export default NoticiaDetalhes;
+export default NoticiasRecomendadas;
