@@ -1,7 +1,7 @@
 // services/api.ts
 
 // Dados mockados de alunos
-const alunosMock = [
+const usuariosMock = [
   { id: 1, nome: "Alice" },
   { id: 2, nome: "Bob" },
   { id: 3, nome: "Carlos" },
@@ -30,14 +30,14 @@ const noticiasMock = [
 ];
 
 // Método para buscar alunos
-export const fetchAlunos = async () => {
+export const fetchUsuarios = async () => {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(alunosMock), 1000); // Simula uma chamada assíncrona
+    setTimeout(() => resolve(usuariosMock), 1000); // Simula uma chamada assíncrona
   });
 };
 
 // Método para buscar notícias recomendadas para um aluno
-export const fetchNoticiasRecomendadas = async (alunoId: number) => {
+export const fetchNoticiasRecomendadas = async () => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(noticiasMock), 1000); // Simula uma chamada assíncrona
   });
@@ -50,3 +50,4 @@ export const fetchNoticiaDetalhes = async (noticiaId: string) => {
     setTimeout(() => resolve(noticia), 1000); // Simula uma chamada assíncrona
   });
 };
+// services/api.ts
